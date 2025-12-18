@@ -1,4 +1,3 @@
-
 package com.example.pokedex
 
 import android.os.Bundle

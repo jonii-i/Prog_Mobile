@@ -21,20 +21,25 @@ public final class FragmentDetailBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final ImageView img;
+  public final TextView pokemonHeight;
 
   @NonNull
-  public final TextView txtInfo;
+  public final ImageView pokemonImage;
 
   @NonNull
-  public final TextView txtName;
+  public final TextView pokemonName;
 
-  private FragmentDetailBinding(@NonNull LinearLayout rootView, @NonNull ImageView img,
-      @NonNull TextView txtInfo, @NonNull TextView txtName) {
+  @NonNull
+  public final TextView pokemonWeight;
+
+  private FragmentDetailBinding(@NonNull LinearLayout rootView, @NonNull TextView pokemonHeight,
+      @NonNull ImageView pokemonImage, @NonNull TextView pokemonName,
+      @NonNull TextView pokemonWeight) {
     this.rootView = rootView;
-    this.img = img;
-    this.txtInfo = txtInfo;
-    this.txtName = txtName;
+    this.pokemonHeight = pokemonHeight;
+    this.pokemonImage = pokemonImage;
+    this.pokemonName = pokemonName;
+    this.pokemonWeight = pokemonWeight;
   }
 
   @Override
@@ -64,25 +69,32 @@ public final class FragmentDetailBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.img;
-      ImageView img = ViewBindings.findChildViewById(rootView, id);
-      if (img == null) {
+      id = R.id.pokemonHeight;
+      TextView pokemonHeight = ViewBindings.findChildViewById(rootView, id);
+      if (pokemonHeight == null) {
         break missingId;
       }
 
-      id = R.id.txtInfo;
-      TextView txtInfo = ViewBindings.findChildViewById(rootView, id);
-      if (txtInfo == null) {
+      id = R.id.pokemonImage;
+      ImageView pokemonImage = ViewBindings.findChildViewById(rootView, id);
+      if (pokemonImage == null) {
         break missingId;
       }
 
-      id = R.id.txtName;
-      TextView txtName = ViewBindings.findChildViewById(rootView, id);
-      if (txtName == null) {
+      id = R.id.pokemonName;
+      TextView pokemonName = ViewBindings.findChildViewById(rootView, id);
+      if (pokemonName == null) {
         break missingId;
       }
 
-      return new FragmentDetailBinding((LinearLayout) rootView, img, txtInfo, txtName);
+      id = R.id.pokemonWeight;
+      TextView pokemonWeight = ViewBindings.findChildViewById(rootView, id);
+      if (pokemonWeight == null) {
+        break missingId;
+      }
+
+      return new FragmentDetailBinding((LinearLayout) rootView, pokemonHeight, pokemonImage,
+          pokemonName, pokemonWeight);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

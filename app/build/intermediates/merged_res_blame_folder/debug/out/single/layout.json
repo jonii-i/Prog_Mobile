@@ -12,8 +12,16 @@
         "source": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-main-37:\\layout\\fragment_list.xml"
     },
     {
+        "merged": "com.example.pokedex.app-mergeDebugResources-34:/layout/fragment_detail.xml",
+        "source": "com.example.pokedex.app-main-37:/layout/fragment_detail.xml"
+    },
+    {
         "merged": "com.example.pokedex.app-mergeDebugResources-34:/layout/item_pokemon.xml",
         "source": "com.example.pokedex.app-main-37:/layout/item_pokemon.xml"
+    },
+    {
+        "merged": "com.example.pokedex.app-mergeDebugResources-34:/layout/fragment_list.xml",
+        "source": "com.example.pokedex.app-main-37:/layout/fragment_list.xml"
     },
     {
         "merged": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-mergeDebugResources-34:\\layout\\activity_main.xml",

@@ -1,17 +1,17 @@
 package com.example.pokedex
 
-
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokedex.api.PokeApiService
+import com.example.pokedex.api.PokemonInfo
+import com.example.pokedex.api.PokemonListItem
 import com.example.pokedex.api.RetrofitInstance
-import com.example.pokedex.api.PokemonResult
 import com.example.pokedex.databinding.FragmentListBinding
 import kotlinx.coroutines.launch
-import android.text.Editable
-import android.text.TextWatcher
 
 class ListFragment : Fragment(R.layout.fragment_list) {
 
@@ -19,14 +19,27 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private val binding get() = _binding!!
 
     private lateinit var adapter: PokemonAdapter
-    private var fullPokemonList: List<PokemonResult> = emptyList()
+    private var fullPokemonList: List<PokemonListItem> = emptyList()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         _binding = FragmentListBinding.bind(view)
 
-        adapter = PokemonAdapter()
+        adapter = PokemonAdapter { pokemonItem ->
+            // Ao clicar, busca informações detalhadas
+            lifecycleScope.launch {
+                try {
+                    val id = extractId(pokemonItem.url)
+                    val info: PokemonInfo = RetrofitInstance.api.getPokemonInfo(id)
+                    parentFragmentManager.beginTransaction()
+                        .replace(binding.root.id, DetailFragment.newInstance(info))
+                        .addToBackStack(null)
+                        .commit()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
@@ -38,7 +51,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private fun loadPokemon() {
         lifecycleScope.launch {
             try {
-                val response = RetrofitInstance.api.getPokemonList(limit = 2000)
+                val response = RetrofitInstance.api.getPokemonList()
                 fullPokemonList = response.results
                 adapter.submitList(fullPokemonList)
             } catch (e: Exception) {
@@ -48,38 +61,15 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     }
 
     private fun setupSearch() {
-        binding.searchEditText.addTextChangedListener(object : TextWatcher {
-
-            override fun beforeTextChanged(
-                s: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-                // não usado
-            }
-
-            override fun onTextChanged(
-                s: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                val query = s.toString().lowercase()
-
-                val filteredList = fullPokemonList.filter {
-                    it.name.contains(query)
-                }
-
-                adapter.submitList(filteredList)
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                // não usado
-            }
-        })
+        binding.searchEditText.doAfterTextChanged { editable ->
+            val query = editable.toString().lowercase()
+            adapter.submitList(fullPokemonList.filter { it.name.contains(query) })
+        }
     }
 
+    private fun extractId(url: String): Int {
+        return url.trimEnd('/').split("/").last().toInt()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.example.pokedex.app-merged_res-35:/layout_fragment_detail.xml.flat",
+        "source": "com.example.pokedex.app-main-37:/layout/fragment_detail.xml"
+    },
+    {
         "merged": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-merged_res-35:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-main-37:\\layout\\activity_main.xml"
     },
@@ -8,12 +12,20 @@
         "source": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-main-37:\\layout\\fragment_detail.xml"
     },
     {
+        "merged": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-merged_res-35:\\drawable_pokemon_placeholder.xml.flat",
+        "source": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-main-37:\\drawable\\pokemon_placeholder.xml"
+    },
+    {
         "merged": "com.example.pokedex.app-merged_res-35:/layout_item_pokemon.xml.flat",
         "source": "com.example.pokedex.app-main-37:/layout/item_pokemon.xml"
     },
     {
         "merged": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-merged_res-35:\\layout_fragment_list.xml.flat",
         "source": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-main-37:\\layout\\fragment_list.xml"
+    },
+    {
+        "merged": "com.example.pokedex.app-merged_res-35:/layout_fragment_list.xml.flat",
+        "source": "com.example.pokedex.app-main-37:/layout/fragment_list.xml"
     },
     {
         "merged": "C:\\Users\\jpgan\\.gradle\\daemon\\9.0-milestone-1\\com.example.pokedex.app-merged_res-35:\\layout_item_pokemon.xml.flat",

@@ -1,13 +1,13 @@
 R_DEF: Internal format may change without notice
 local
+drawable pokemon_placeholder
 id container
-id img
+id pokemonHeight
 id pokemonImage
 id pokemonName
+id pokemonWeight
 id recyclerView
 id searchEditText
-id txtInfo
-id txtName
 layout activity_main
 layout fragment_detail
 layout fragment_list

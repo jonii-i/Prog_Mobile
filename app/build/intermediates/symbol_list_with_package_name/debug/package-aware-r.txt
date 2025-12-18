@@ -3002,6 +3002,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable pokemon_placeholder
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3201,7 +3202,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id img
 id indeterminate
 id info
 id invisible
@@ -3324,8 +3324,10 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id pokemonHeight
 id pokemonImage
 id pokemonName
+id pokemonWeight
 id pooling_container_listener_holder_tag
 id position
 id postLayout
@@ -3449,8 +3451,6 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id txtInfo
-id txtName
 id unchecked
 id uniform
 id unlabeled
